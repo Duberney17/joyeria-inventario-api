@@ -1,0 +1,26 @@
+# Dependencias
+node_modules/
+
+# Variables de entorno (contiene credenciales de la BD)
+.env
+.env.*
+!.env.example
+
+# Build / compilado de TypeScript
+dist/
+build/
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+
+# Editor / OS
+.vscode/*
+!.vscode/extensions.json
+.idea/
+.DS_Store
+Thumbs.db
+
+# Cobertura de tests
+coverage/
