@@ -2,6 +2,7 @@ import { Router } from "express";
 import { JewelController } from "../controllers/jewelController";
 import { body, param } from "express-validator";
 import { captureErrors } from "../middleware/captureErrors";
+import { verificarToken } from "../middleware/verificarToken";
 
 
 
@@ -11,6 +12,7 @@ const router = Router();
 router.get('/', JewelController.getAllJewels);
 
 router.post('/',
+    verificarToken,
     body('name').
         notEmpty().withMessage('El nombre es obligatorio'),
     body('description').
@@ -49,6 +51,7 @@ router.get('/:id',
 );
 
 router.put('/:id',
+    verificarToken,
     param('id').
         isMongoId().withMessage('El ID no es valido'),
     body('name').
@@ -82,6 +85,7 @@ router.put('/:id',
 );
 
 router.delete('/:id',
+    verificarToken,
     param('id').
         isMongoId().withMessage('El ID no es valido'),
         captureErrors,
